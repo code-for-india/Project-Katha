@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Money! Money!</title>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+<script src="js/jquery.ui.core.js"></script>
+<script src="js/jquery.ui.progressbar.js"></script>
+<script src="js/jquery-ui.widget.js"></script>
+
+<link href='css/all.css' rel='stylesheet' type='text/css'>
+
+<style>
+#time>.ui-widget-header {
+	background-color: yellow !important;
+	background: yellow !important;
+}
+
+#progressbar>.ui-widget-header {
+	background-color: red !important;
+	background: red !important;
+}
+
+#progressbar2>.ui-widget-header {
+	background-color: green !important;
+	background: green !important;
+}
+
+#health>.ui-widget-header {
+	background-color: blue !important;
+	background: blue !important;
+}
+
+.gameScr {
+	width: 1000px;
+	height: 650px;
+	margin-left: 20%;
+	box-shadow: 10px 10px 5px #888888;
+	background-image: url(images/game.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.myButton {
+	width: 200px;
+	height: 75px;
+}
+</style>
+<script>
+	var numOfClicks = 0;
+	var dayCount = 0;
+	var timeValue=100;
+	var energyValue=100;
+	var totalDebtValue=30;
+	var healthValue=80;
+	var cashValue=1000;
+	var incValue=0;
+	var isIncAvailable=false;
+	var numOfCourses=0;
+
+	$(document).ready(function() {
+
+		function init() {
+			//update all the meters
+			//start all meters with 70% except Debt- 30%
+			$("#progressbar").progressbar({
+				value : 37
+			});
+
+			$("#progressbar2").progressbar({
+				value : 75
+			});
+
+			$("#health").progressbar({
+				value : 75
+			});
+
+			$("#time").progressbar({
+				value : 100
+			});
+		}
+
+		init();
+
+		//disable on load
+
+		$("#nextDay").attr('disabled', 'enabled');
+		function resetCounter() {
+			numOfClicks = 0;
+			$("#time>.ui-progressbar-value").css("width","100%");
+			$(".mainB").removeAttr("disabled");
+			$("#nextDay").attr('disabled', 'enabled');
+		}
+		function checkClickCount() {
+
+			if (numOfClicks + 1 == 1) {
+				//timeValue=66;
+				$("#time>.ui-progressbar-value").css("width","66%");
+				numOfClicks++;
+				
+			} else if (numOfClicks + 1 == 2) {
+				//timeValue=33;
+				$("#time>.ui-progressbar-value").css("width","33%");
+				numOfClicks++;
+				
+			}
+
+			else if (numOfClicks == 2) {
+				//enable next day button
+				//timeValue=0;
+				$("#time>.ui-progressbar-value").css("width","0%");
+				
+				$("#nextDay").removeAttr("disabled");
+				$(".mainB").attr('disabled', 'enabled');
+				numOfClicks++;
+
+			} else {
+				//increment count
+				numOfClicks++;
+
+			}
+
+		}
+
+		function incrementDay() {
+
+			dayCount++;
+
+			$("#dayCount").html("" + dayCount);
+
+		}
+
+		
+
+		$(".mainB").click(function() {
+			//alert("tst");
+			checkClickCount();
+			var idValue = this.id;
+			//alert(idValue);
+			if(idValue == "Sleep"){
+				energyValue=(Math.round)(energyValue+(0.35*energyValue));
+				if(energyValue>100){
+					energyValue=100;
+				}
+				healthValue=(Math.round)(healthValue+(0.05*healthValue));
+				if(healthValue>100){
+					healthValue=100;
+				}
+				
+				
+			}else if(idValue == "Work"){
+				//energy dec
+				energyValue=(Math.round)(energyValue-(0.4*energyValue));
+				if(energyValue<0){
+					energyValue=0;
+				}
+				//cash inc
+				if(isIncAvailable){
+					cashValue=cashValue+incValue;
+				}
+				cashValue=2*(cashValue);
+				
+				//health dec
+				if(energyValue<35){
+				healthValue=(Math.round)(healthValue-(0.25*healthValue));
+				if(healthValue<0){
+					healthValue=0;
+				}
+				}
+				
+			}else if(idValue == "Family"){
+				cashValue=cashValue-(.1*cashValue);
+				if(cashValue<0){
+					cashValue=0;
+				}
+				
+				energyValue=(Math.round)(energyValue-(0.1*energyValue));
+				if(energyValue<0){
+					energyValue=0;
+				}
+				
+				healthValue=(Math.round)(healthValue+(0.25*healthValue));
+				if(healthValue>100){
+					healthValue=100;
+				}
+				
+				
+			}else if(idValue == "Study"){
+				//alert("stest");
+				cashValue=(Math.round)(cashValue-(500*numOfCourses*.35));
+				if(cashValue<0){
+					cashValue=0;
+				}
+				
+				isIncAvailable=true;
+				//alert(energyValue);
+				energyValue=(Math.round)(energyValue-(0.2*energyValue));
+				//alert(energyValue);
+				if(energyValue<0){
+					energyValue=0;
+				}
+				
+				numOfCourses++;
+				
+			}
+			
+			
+			$("#progressbar2>.ui-progressbar-value").css("width",energyValue+"%");
+			$("#health>.ui-progressbar-value").css("width",healthValue+"%");
+			//$("#progressbar2>.ui-progressbar-value").css("width",energyValue+"%");
+			
+			
+			
+
+		});
+
+		$("#nextDay").click(function() {
+			incrementDay();
+			resetCounter();
+
+		});
+
+	});
+</script>
+</head>
+<body>
+	<div style="display: block;">
+		<!-- <audio autoplay="autoplay" id="backtrack" src="music/beat.mp3" loop>  -->
+		<audio id="backtrack" src="music/beat.mp3" loop> </audio>
+	</div>
+
+
+	<div class="gameScr" id="gamescreen" style="background-color: gray;">
+		<br> <br> <br>
+		<table style="width: 100%">
+			<tr>
+
+
+				<td valign="top" style="width: 25%;"><div>
+						Total Debt:<span id="totaldebt">2000 Rs</span>
+						<div id="progressbar"></div>
+						Energy:<span id="energy"> </span>
+						<div id="progressbar2"></div>
+					</div> <br> <br>
+
+					<div
+						style="background-color: black; width: 100%; height: 200px; color: white;">
+						<b>Cash in Hand:</b><br>
+						<div id="cash">1000 Rs.</div>
+						<br> <b>Expense Report</b>
+						<table>
+							<tr>
+								<td>Rent</td>
+								<td id="rent">500 Rs.</td>
+
+							</tr>
+							<tr>
+								<td>Other Expenses</td>
+								<td id="other">100 Rs.</td>
+
+							</tr>
+
+						</table>
+						<input id="debtPayment" type="text"> <input id="Pay"
+							type="button" value="Pay Debt" />
+
+					</div></td>
+				<td align="center"><div>
+						<div style="font-size: xx-large;">Money! Money!</div>
+						<br> <br> <input class="mainB myButton" type="button"
+							id="Sleep" value="Sleep" /><br> <br> <br> <input
+							class="mainB myButton" type="button" id="Work" value="Work" /><br>
+						<br> <br> <input class="mainB myButton" type="button"
+							id="Family" value="Family" /> <br> <br> <br>
+						<input class="mainB myButton" type="button" id="Study"
+							value="Part-Time Studies" />
+					</div></td>
+				<td valign="top" style="width: 25%;"><div
+						style="postion: relative; top: 10px">
+
+						Health:
+						<div id="health"></div>
+						<br> Time:<br>
+						<div id="time"></div>
+					</div> <br> <br>
+					<div id="days">
+						No. of Days : <span id="dayCount">0</span>
+					</div> <input id="nextDay" style="bottom: 20px;" class="myButton"
+					type="button" value="Goto Next Day!" /></td>
+			</tr>
+		</table>
+
+
+	</div>
+
+</body>
+</html>

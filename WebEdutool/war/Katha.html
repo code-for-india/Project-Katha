@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Katha</title>
+
+<script src="js/jquery.js"></script>
+<script src="js/gamequery.js"></script>
+<script src="js/my.js"></script>
+
+
+<link href='http://fonts.googleapis.com/css?family=Sanchez'
+	rel='stylesheet' type='text/css'>
+
+<script>
+	
+</script>
+<style>
+body {
+	font-family: 'Sanchez', serif;
+}
+
+q {
+	font-size: xx-large;
+}
+
+.gameScr {
+	width: 800px;
+	height: 650px;
+	display: none;
+	/* background-color: black; */
+	margin-left: 20%;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+#playButton {
+	position: relative;
+	top: 350px;
+	left: 350px;
+	width: 100px;
+	height: 100px;
+	background-image: url(images/play.png);
+}
+
+.content {
+	color: black;
+	font-family: 'Sanchez', serif;
+	position: relative;
+	top: 15%;
+	left: 8%;
+	bottom: 10%;
+	right: 8%;
+	width: 80%;
+	height: 60%; //
+	background-image: url(images/0002.png); //
+	background-repeat: no-repeat;
+}
+</style>
+</head>
+<body style="background-color: #B0C4DE;">
+	<div style="display: block;">
+		<!-- <audio autoplay="autoplay" id="backtrack" src="music/beat.mp3" loop>  -->
+		<audio id="backtrack" src="music/beat.mp3" loop>
+		</audio>
+	</div>
+
+	<div id="gamescreen" class="gameScr">
+		<div id="playButton"></div>
+	</div>
+
+	<div id="plot1" class="gameScr"
+		style="background-size: cover; background-repeat: no-repeat;">
+		<div class="content" >
+			<q>Welcome to Hari's village !!</q>
+			<div style="font-size: large; color: black;">
+				<br> <br> Hari lives in a village with his daughter Diya.
+				He needs your help to sort out his finances. Will you help him?
+			</div>
+			<br> <br> <input id="next1" type="button" value="Next" />
+		</div>
+	</div>
+
+	<div id="plot2" class="gameScr"
+		style="background-size: cover; background-color: blue; background-repeat: no-repeat;">
+		<div class="content" >
+			<q>Resources with Hari</q>
+			<div style="font-size: large; color: white;">
+				<br> <br> 1 acre of land worth Rs 1,20,000/- 1 cow worth
+				Rs 85,000/- 1,00,000 rupees of cash
+
+			</div>
+			<br> <br> <input id="next2" type="button" value="Next" />
+
+		</div>
+
+	</div>
+
+
+	<div id="plot3" class="gameScr"
+		style="background-size: cover; background-color: blue; background-repeat: no-repeat;">
+		<div class="content" style="">
+			<q> Needs and Wants of Hari </q>
+			<div style="font-size: large; color: white;">
+				<br> <br>Send his daughter to college, yearly cost of
+				which is Rs 1,20,000 /- Sustain his family, yearly cost of which is
+				Rs 50,000/- Sustain the cattle, yearly cost of which is Rs 20,000/-
+				<br> <br> <input style="position: relative" type="button"
+					value="Next">
+			</div>
+
+
+		</div>
+
+	</div>
+	
+	
+	<div id="plot4" class="gameScr"
+		style="background-size: cover; background-color: blue; background-repeat: no-repeat;">
+		<div class="content" style="">
+			<q> Needs and Wants of Hari </q>
+			<div style="font-size: large; color: white;">
+				<br> <br>Send his daughter to college, yearly cost of
+				which is Rs 1,20,000 /- Sustain his family, yearly cost of which is
+				Rs 50,000/- Sustain the cattle, yearly cost of which is Rs 20,000/-
+				<br> <br> <input style="position: relative" type="button"
+					value="Next">
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>
