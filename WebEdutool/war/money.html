@@ -10,6 +10,8 @@
 <script src="js/jquery.ui.progressbar.js"></script>
 <script src="js/jquery-ui.widget.js"></script>
 
+<link href='http://fonts.googleapis.com/css?family=Cantarell:400italic' rel='stylesheet' type='text/css'>
+
 <link href='css/all.css' rel='stylesheet' type='text/css'>
 
 <style>
@@ -84,7 +86,7 @@
 			
 			
 			//$("#cashValue").html(""+cashValue);
-			$("#cash").html(""+cashValue);
+			$("#cash").html(""+Math.round(cashValue));
 			//update all the meters
 			//start all meters with 70% except Debt- 30%
 			$("#progressbar").progressbar({
@@ -185,6 +187,7 @@
 					cashValue=cashValue+incValue;
 				}
 				cashValue=2*(cashValue);
+				$("#cash").html(""+Math.round(cashValue));
 				
 				//health dec
 				if(energyValue<35){
@@ -235,7 +238,7 @@
 			$("#progressbar2>.ui-progressbar-value").css("width",energyValue+"%");
 			$("#health>.ui-progressbar-value").css("width",healthValue+"%");
 			//$("#progressbar2>.ui-progressbar-value").css("width",energyValue+"%");
-			$("#cashValue").html(""+cashValue);
+			$("#cash").html(""+Math.round(cashValue));
 			
 			
 			
@@ -243,26 +246,28 @@
 		});
 
 		$("#nextDay").click(function() {
+			checkForVictory();
 			incrementDay();
 			resetCounter();
 
 		});
 		
+		function checkForVictory(){
+			
+			
+			
+		}
 		$("#Pay").click(function(){
 			var payment = $("#debtPayment").val();
 			
 			if(!cashValue-payment<0){
-				
-			
-			
-			
 			cashValue=cashValue-payment;
 			
 			totalDebtValue=totalDebtValue-payment;
 			
 			
 			//$("#cashValue").html(""+cashValue);
-			$("#cash").html(""+cashValue);
+			$("#cash").html(""+Math.round(cashValue));
 			var debtPer = (totalDebtValue/maxDebt)*100;
 			$("#progressbar>.ui-progressbar-value").css("width",debtPer+"%");
 			
@@ -277,10 +282,11 @@
 	});
 </script>
 </head>
-<body>
+<body style="font-family: 'Cantarell', sans-serif;">
 	<div style="display: block;">
 		<!-- <audio autoplay="autoplay" id="backtrack" src="music/beat.mp3" loop>  -->
-		<audio id="backtrack" src="music/beat.mp3" loop> </audio>
+		<audio autoplay="autoplay" id="backtrack" src="music/beat.mp3" loop>
+		</audio>
 	</div>
 
 
