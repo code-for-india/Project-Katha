@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title> MY HTML </title>
+	 <script type="text/javascript">
+	 	var variableName;
+	 	function popUp(){
+
+	 		alert('You clicked me');
+	 	}
+
+	 	function validateTextBox(){
+	 		var userName=document.getElementById('txt1').value;
+	 		var passWord=document.getElementById('txt2').value;
+	 		if(userName == "")
+	 			alert('Please Enter Username !');
+	 		if(passWord == "")
+	 			alert('Please Enter Password !');
+
+	 	}
+	 </script>
+	
+	</head>
+	<body bgcolor="cyan">
+		<h1>MY SECOND WEBPAGE :D</h1>
+		
+		<label>Enter Username</label>
+		<input type="text" id="txt1">
+		<br>
+		<br>
+		<br>
+		<label>Enter Password</label>
+		<input type="password" id="txt2">
+		<br>
+		<br>
+		<input type="button" id="popUp" onclick=popUp() value="Click Me!">
+		<input type="button" id="popMe" onclick=validateTextBox() value="Validate">
+	<form>
+		<input type="email">
+		<input type="submit">	
+		
+	</form>
+		<input type="date">	
+		<marquee>
+		<img src="logo.jpg"/> 
+		</marquee>
+	</body>
+</html>

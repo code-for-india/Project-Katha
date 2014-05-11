@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="viewport no-js no-ie" lang="en">
+<head></head>
+<title>Katha</title>
+<script type="text/javascript">
+	var variableName;
+	function popUp() {
+	
+		window.location.href='money.html';
+		//alert('You clicked me');
+	}
+
+	function validateTextBox() {
+		var userName = document.getElementById('txt1').value;
+		var passWord = document.getElementById('txt2').value;
+		if (userName == "")
+			alert('Please Enter Username !');
+		if (passWord == "")
+			alert('Please Enter Password !');
+
+	}
+</script>
+
+<link rel="stylesheet" href="screen.css">
+
+<body class="bg--yellow ">
+
+	<div id="inner-wrap">
+
+		<div class="container">
+
+			<header class="header " role="banner">
+
+				<div class="logo">
+					<img width="200" height="100" class="logo__graphic" src="aif.png"
+						alt="Mixd" /> <span class="logo__tagline">World class <br>
+						Financial Literacy
+					</span>
+				</div>
+
+				<a href="#" class="nav-toggle nav-toggle--open icon--menu"
+					id="nav-open-btn"></a>
+				<nav id="nav" class="nav-container" role="navigation">
+					<a href="#" class="nav-toggle nav-toggle--close icon--close"
+						id="nav-close-btn"></a>
+					<ul class="nav nav--primary">
+						<li class="is-current is-current"><a
+							href="http://www.mixd.co.uk/">Home</a></li>
+						<li><a href="http://www.mixd.co.uk/about/">About</a></li>
+						<li><a href="http://www.mixd.co.uk/approach/">Approach</a></li>
+						<li><a href="http://www.mixd.co.uk/work/">Work</a></li>
+						<li><a href="http://www.mixd.co.uk/blog/">Blog</a></li>
+						<li><a href="http://www.mixd.co.uk/contact/">Contact</a></li>
+					</ul>
+				</nav>
+
+			</header>
+
+			<div class="content" role="main">
+
+				<div class="figure figure--pencil">
+					<div class="figure__wrap">
+
+						<figure class="figure__inner">
+							<img src="pencil-full.png" alt="Beautiful form, perfect function"
+								class="figure__object">
+							<figcaption class="figure__caption">
+								<h1>
+									Beautiful form,<br />perfect function.
+								</h1>
+
+								<input type="text" id="txt1" placeholder="Username"> <input
+									type="password" id="txt2" placeholder="Password"> <br>
+
+								<input  type="button" id="popUp" onclick=popUp() value="LOGIN !">
+
+							</figcaption>
+
+						</figure>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script type='text/javascript'
+		src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js?ver=3.6'></script>
+	<script type='text/javascript'
+		src='http://www.mixd.co.uk/content/themes/mixd-2013/assets/js/scripts.min.js?ver=3.6'></script>
+	<div class="back-to-top icon--top" href="#top"></div>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-337875-1' ]);
+		_gaq.push([ '_trackPageview' ]);
+
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	<script type="text/javascript">
+		window.NREUM || (NREUM = {});
+		NREUM.info = {
+			"beacon" : "beacon-3.newrelic.com",
+			"licenseKey" : "1efa695f6f",
+			"applicationID" : "157461",
+			"transactionName" : "YlNbNUYEXkZTVxBeVlsZeAJADF9bHVIWWFdB",
+			"queueTime" : 0,
+			"applicationTime" : 1090,
+			"ttGuid" : "",
+			"agentToken" : "",
+			"userAttributes" : "",
+			"errorBeacon" : "jserror.newrelic.com",
+			"agent" : "js-agent.newrelic.com\/nr-380.min.js"
+		}
+	</script>
+</body>
+</html>
